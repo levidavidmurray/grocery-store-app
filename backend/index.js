@@ -6,22 +6,18 @@ import GroceryItems from './DBConnector';
 const app = express();
 app.use(cors());
 
-const groceryCategories = [
-  'bakery', 
-  'dairy', 
-  'deli', 
-  'meat_and_seafood', 
-  'pasta_sauces_grains', 
-  'produce'
-];
+const categoryPathMap = {
+  bakery: 'bakery',
+  dairy: 'dairy',
+  deli: 'deli',
+  meat: 'meat_and_seafood',
+  pasta: 'pasta_sauces_grains',
+  produce: 'produce'
+};
 
-groceryCategories.forEach(category => {
-  let groceryItems = GroceryItems(category).findAll().then(items => {
-    return items;
-  });
-
-  app.get(`/${category}`, (req, res) => {
-    GroceryItems(category).findAll({ limit: 5 }).then(items => {
+Object.entries(categoryPathMap).forEach(categoryPath => {
+  app.get(`/${categoryPath[0]}`, (req, res) => {
+    GroceryItems(categoryPath[1]).findAll({ limit: 5 }).then(items => {
       res.send(items);
     });
   });

@@ -19,7 +19,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:4070/bakery')
+    axios.get('http://localhost:4070/meat')
     .then(response => {
       console.log(response.data);
       this.setState({
