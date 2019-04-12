@@ -1,42 +1,26 @@
 import React, { Component } from "react";
-import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Item from './Item';
+import Category from '../views/Category';
 
 import './styles/App.scss';
 
+const pathCategories = ['bakery', 'deli', 'meat', 'dairy', 'pasta', 'produce'];
+
 class App extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      groceryItems: []
-    };
-  }
-
-  renderGroceryItem() {
-    return this.state.groceryItems.map(item => {
-      return (
-        <Item key={item.sku} item={item} />
-      );
-    });
-  }
-
-  componentWillMount() {
-    axios.get('http://localhost:4070/meat')
-    .then(response => {
-      console.log(response.data);
-      this.setState({
-        groceryItems: response.data
-      });
+  createCategoryPaths() {
+    return pathCategories.map(category => {
+      let path = `/${category}`;
+      return <Route path={path} render={() => <Category name={category} />} />
     });
   }
 
   render() {
     return (
-      <div>
-        <div className="grocery-items">{ this.renderGroceryItem() }</div>
-      </div>
+      <Router>
+        { this.createCategoryPaths() }
+      </Router>
     );
   }
 }
