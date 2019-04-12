@@ -1,0 +1,45 @@
+.item {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 350px;
+  background-color: beige;
+  margin: 0 20px;
+
+  .item-img {
+    width: 100%;
+    flex-grow: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .img {
+      width: 90%;
+      height: 80%;
+      background-color: rgb(134, 196, 214);
+    }
+  }
+
+  .item-info {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+  
+    .name {
+      font-size: 15px;
+    }
+  
+    .brand {
+      color: rgb(175, 174, 174);
+      font-size: 13px;
+    }
+  
+    .price {
+      font-size: 19px;
+    }
+  }  
+}
+

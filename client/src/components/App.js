@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import axios from 'axios';
 
+import Item from './Item';
+
+import './styles/App.scss';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +17,7 @@ class App extends Component {
   renderGroceryItem() {
     return this.state.groceryItems.map(item => {
       return (
-        <div key={item.sku}>{ item.name }</div>
+        <Item key={item.sku} item={item} />
       );
     });
   }
@@ -30,7 +34,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>{ this.renderGroceryItem() }</div>
+      <div>
+        <div className="grocery-items">{ this.renderGroceryItem() }</div>
+      </div>
     );
   }
 }
