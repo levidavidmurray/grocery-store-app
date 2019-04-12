@@ -20,9 +20,11 @@ class Item extends Component {
           <div className="img"></div>
         </div>
         <div className="item-info">
-          <div className="name">{ item.name }</div>
-          <div className="brand">{ item.brand }</div>
-          <div className="price">{ item.currentPrice }</div>
+          <div className="top-info">
+            <div className="name">{ item.name }</div>
+            <div className="brand">{ item.brand }</div>
+            <div className="price">{ item.currentPrice }</div>
+          </div>
           <div className="sku">{ item.sku }</div>
         </div>
       </div>

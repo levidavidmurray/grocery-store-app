@@ -1,5 +1,11 @@
+@import "./variables/colors.scss";
+
 * {
   box-sizing: border-box;
+}
+
+body {
+  background-color: $off-white;
 }
 
 .grocery-items {

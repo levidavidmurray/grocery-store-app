@@ -1,14 +1,17 @@
+@import "./variables/colors.scss";
+
 .item {
   display: flex;
   flex-direction: column;
   width: 250px;
   height: 350px;
-  background-color: beige;
+  background-color: white;
   margin: 0 20px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
 
   .item-img {
     width: 100%;
-    flex-grow: 2;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,30 +19,47 @@
     .img {
       width: 90%;
       height: 80%;
-      background-color: rgb(134, 196, 214);
+      background-color: $dark-red;
     }
   }
 
   .item-info {
+    color: #141414;
     flex-grow: 1;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 20px;
-  
-    .name {
-      font-size: 15px;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    .top-info {
+      width: 90%;
+
+      .name {
+        font-size: 15px;
+        font-weight: bold;
+        color: $deep-red;
+      }
+    
+      .brand {
+        color: $greyish-pink;
+        font-size: 13px;
+      }
+    
+      .price {
+        font-size: 19px;
+        font-weight: bold;
+        color: #141414;
+      }
     }
   
-    .brand {
-      color: rgb(175, 174, 174);
-      font-size: 13px;
+    .sku {
+      font-size: 10px;
+      letter-spacing: 0.9px;
+      color: $dark-red;
     }
-  
-    .price {
-      font-size: 19px;
-    }
+    
   }  
 }
 
