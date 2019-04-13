@@ -10,14 +10,26 @@ class NavBar extends Component {
     };
   }
 
+  calculateTabStyle(index) {
+    console.log(index);
+    let left = (index * 20);
+    let zIndex = 1;
+
+    left = `-${left}px`;
+    zIndex += this.props.pathCategories.length - index;
+
+    return { zIndex, left };
+  }
+
   createCategoryNavBar() {
-    return this.props.pathCategories.map(category => {
+    return this.props.pathCategories.map((category, index) => {
       let activeClass = this.props.activeTab === category ? 'active' : ''
       let path = `/${category}`;
       return (
         <Link 
           key={category} 
-          to={path} 
+          to={path}
+          style={this.calculateTabStyle(index)}
           className={`link ${activeClass}`}
           onClick={() => this.props.setActiveTab(category)}
         >

@@ -7,7 +7,7 @@
   height: 330px;
   background-color: white;
   margin: 0 10px;
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+  box-shadow: $box-shadow-default;
   padding: 0 15px;
 
   .item-img {

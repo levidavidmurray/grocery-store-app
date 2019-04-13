@@ -14,22 +14,25 @@
       justify-content: center;
       align-items: center;
       padding: 15px;
-      margin-right: 10px;
       border-radius: 10px 10px 0 0;
       color: #141414;
       text-decoration: none;
+      box-shadow: 2px 2px 4px -2px rgba(0, 0, 0, 0.42);
       padding-bottom: 30px;
       position: relative;
       transform: translateY(15px);
-      transition: transform 0.15s ease;
+      transition: all 0.1s ease;
       z-index: 1;
       background-color: $color-tab-inactive;
       text-transform: capitalize;
       max-width: 170px;
+      position: relative;
 
       &.active {
         transform: translateY(5px);
         background-color: $bg-secondary;
+        box-shadow: 1px -2px 4px -2px rgba(0, 0, 0, 0.1);
+        z-index: 20 !important;
       }
 
       &:hover {
@@ -43,8 +46,9 @@
   }
 
   .category {
+    box-shadow: $box-shadow-default;
     position: relative;
-    z-index: 2;
+    z-index: 15;
     background-color: $bg-secondary;
     padding: 35px;
     padding-top: 100px;
