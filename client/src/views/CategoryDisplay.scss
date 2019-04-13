@@ -1,0 +1,53 @@
+@import '../components/styles/variables/colors.scss';
+
+.category-display {
+  width: 90%;
+  margin: 0 auto;
+
+  .navbar {
+    display: flex;
+    width: 75%;    
+    
+    .link {
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px;
+      margin-right: 10px;
+      border-radius: 10px 10px 0 0;
+      color: #141414;
+      text-decoration: none;
+      padding-bottom: 30px;
+      position: relative;
+      transform: translateY(15px);
+      transition: transform 0.15s ease;
+      z-index: 1;
+      background-color: $color-tab-inactive;
+      text-transform: capitalize;
+      max-width: 170px;
+
+      &.active {
+        transform: translateY(5px);
+        background-color: $bg-secondary;
+      }
+
+      &:hover {
+        transform: translateY(5px);
+      }
+  
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .category {
+    position: relative;
+    z-index: 2;
+    background-color: $bg-secondary;
+    padding: 35px;
+    padding-top: 100px;
+    min-height: 700px;
+  }
+}

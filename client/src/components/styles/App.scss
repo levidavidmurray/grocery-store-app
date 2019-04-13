@@ -2,38 +2,21 @@
 
 * {
   box-sizing: border-box;
+  
+}
+
+h1 {
+  text-align: center;
+  font-size: 4em;
+  color: $primary;
+  text-shadow: 1px 1px 3px #989898;
+  margin-bottom: 15px;
+  margin-top: 0;
 }
 
 body {
   background-color: $site-bg;
   font-family: 'Roboto Slab', serif;
-}
-
-.navbar {
-  display: flex;
-  width: 75%;
-  max-width: 1024px;
-  margin: 0 auto;
-  
-  
-  .link {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: $bg-secondary;
-    padding: 15px;
-    margin-right: 15px;
-
-    &:last-of-type {
-      margin-right: none;
-    }
-
-    a {
-      color: #141414;
-      text-decoration: none;
-    }
-  }
 }
 
 .grocery-items {

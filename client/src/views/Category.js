@@ -23,7 +23,6 @@ class Category extends Component {
   componentWillMount() {
     axios.get(`http://localhost:4070/${this.props.name}`)
     .then(response => {
-      console.log(response.data);
       this.setState({
         groceryItems: response.data
       });
@@ -32,7 +31,7 @@ class Category extends Component {
 
   render() {
     return (
-      <div>
+      <div className="category">
         <div className="grocery-items">{ this.renderGroceryItem() }</div>      
       </div>
     );
