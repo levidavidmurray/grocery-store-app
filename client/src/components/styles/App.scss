@@ -6,6 +6,34 @@
 
 body {
   background-color: $site-bg;
+  font-family: 'Roboto Slab', serif;
+}
+
+.navbar {
+  display: flex;
+  width: 75%;
+  max-width: 1024px;
+  margin: 0 auto;
+  
+  
+  .link {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $bg-secondary;
+    padding: 15px;
+    margin-right: 15px;
+
+    &:last-of-type {
+      margin-right: none;
+    }
+
+    a {
+      color: #141414;
+      text-decoration: none;
+    }
+  }
 }
 
 .grocery-items {
