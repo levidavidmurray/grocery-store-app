@@ -22,4 +22,5 @@ body {
 .grocery-items {
   display: flex;
   font-family: 'Roboto Slab', serif;
+  flex-wrap: wrap;
 }

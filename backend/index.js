@@ -17,7 +17,7 @@ const categoryPathMap = {
 
 Object.entries(categoryPathMap).forEach(categoryPath => {
   app.get(`/${categoryPath[0]}`, (req, res) => {
-    GroceryItems(categoryPath[1]).findAll({ limit: 5 }).then(items => {
+    GroceryItems(categoryPath[1]).findAll({ limit: 20 }).then(items => {
       res.send(items);
     });
   });
