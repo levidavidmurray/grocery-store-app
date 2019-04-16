@@ -25,7 +25,7 @@ class CategoryDisplay extends Component {
   createCategoryPaths() {
     return this.props.pathCategories.map(category => {
       let path = `/${category}`;
-      return <Route key={category} path={path} render={() => <Category name={category} />} />
+      return <Route key={category} path={path} render={() => <Category name={category} setActiveTab={(selectedTab) => this.setActiveTab(selectedTab)} />} />
     });
   }
 

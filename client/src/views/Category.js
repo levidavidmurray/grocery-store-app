@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 import Item from '../components/Item';
 
@@ -36,6 +37,8 @@ class Category extends Component {
   }
 
   componentWillMount() {
+    this.props.setActiveTab(this.props.name);
+
     axios.get(`http://localhost:4070/${this.props.name}`)
     .then(response => {
       this.setState({
@@ -60,4 +63,4 @@ class Category extends Component {
   }
 }
 
-export default Category;
+export default withRouter(Category);

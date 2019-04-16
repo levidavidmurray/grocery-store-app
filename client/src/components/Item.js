@@ -17,7 +17,7 @@ class Item extends Component {
     return (
       <div className="item">
         <div className="item-img">
-          <i class={`fas fa-${this.props.categoryIcon}`}></i>
+          <i className={`fas fa-${this.props.categoryIcon}`}></i>
         </div>
         <div className="item-info">
           <div className="top-info">
