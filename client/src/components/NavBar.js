@@ -11,7 +11,6 @@ class NavBar extends Component {
   }
 
   calculateTabStyle(index) {
-    console.log(index);
     let left = (index * 20);
     let zIndex = 1;
 

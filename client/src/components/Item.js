@@ -17,13 +17,16 @@ class Item extends Component {
     return (
       <div className="item">
         <div className="item-img">
-          <div className="img"></div>
+          <i class={`fas fa-${this.props.categoryIcon}`}></i>
         </div>
         <div className="item-info">
           <div className="top-info">
             <div className="name">{ item.name }</div>
             <div className="brand">{ item.brand }</div>
             <div className="price">{ item.currentPrice }</div>
+          </div>
+          <div className="add-to-cart">
+            <div className="add-btn">Add to cart</div>
           </div>
           <div className="sku">{ item.sku }</div>
         </div>

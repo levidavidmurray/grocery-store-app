@@ -3,25 +3,23 @@
 .item {
   display: flex;
   flex-direction: column;
-  width: 230px;
-  height: 330px;
+  width: 195px;
   background-color: white;
-  margin: 0 10px;
+  margin: 0 5px;
   box-shadow: $box-shadow-default;
   padding: 0 15px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 
   .item-img {
     width: 100%;
-    height: 180px;
+    height: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
 
-    .img {
-      width: 100%;
-      height: 80%;
-      background-color: $primary;
+    i {
+      font-size: 75px;
+      color: $secondary;
     }
   }
 
@@ -33,13 +31,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 
     .top-info {
       width: 100%;
+      min-height: 80px;
 
       .name {
-        font-size: 15px;
+        font-size: 13px;
         font-weight: bold;
         color: $primary;
       }
@@ -60,8 +59,31 @@
       font-size: 10px;
       letter-spacing: 0.9px;
       color: $primary;
+      margin-top: 10px
     }
-    
+
+    .add-to-cart {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      margin: 5px 0;
+
+      .add-btn {
+        width: 60%;
+        padding: 10px 0;
+        background-color: $primary;
+        color: #141414;
+        font-size: 15px;
+        text-align: center;
+        cursor: pointer;
+        border: 2px solid #d44d43;
+
+        &:hover {
+          font-weight: bold;
+          color: white;
+        }
+      }
+    }
   }  
 }
 

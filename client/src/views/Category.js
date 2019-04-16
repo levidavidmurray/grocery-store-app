@@ -3,6 +3,15 @@ import axios from 'axios';
 
 import Item from '../components/Item';
 
+const categoryIconMap = {
+  bakery: 'bread-slice',
+  deli: 'cheese',
+  meat: 'drumstick-bite',
+  dairy: 'egg',
+  pasta: 'pizza-slice',
+  produce: 'apple-alt'
+};
+
 class Category extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +24,15 @@ class Category extends Component {
   renderGroceryItem() {
     return this.state.groceryItems.map(item => {
       return (
-        <Item key={item.sku} item={item} />
+        <Item key={item.sku} item={item} categoryIcon={categoryIconMap[this.props.name]} />
       );
     });
+  }
+
+  renderLoader() {
+    return (
+      <div>Loading...</div>
+    );
   }
 
   componentWillMount() {
@@ -30,8 +45,15 @@ class Category extends Component {
   }
 
   render() {
+    let isLoading = this.renderLoader();
+    if (this.state.groceryItems.length > 0) {
+      isLoading = undefined;
+    }
+
     return (
       <div className="category">
+        { isLoading }
+        <div className="filter"></div>
         <div className="grocery-items">{ this.renderGroceryItem() }</div>      
       </div>
     );
