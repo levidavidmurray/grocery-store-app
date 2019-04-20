@@ -1,31 +1,32 @@
 <template>
 	<div class="category">
-		<div
-				v-for="(item, index) in items"
-				class="item"
-				:key="`${index}-${item.sku}`"
-		>
-			<div class="item-info">
-				<div class="name">{{ item.name }}</div>
-				<div class="brand">{{ item.brand }}</div>
-				<div class="price">{{ item.currentPrice }}</div>
-			</div>
-			<div class="add-to-cart">
-				<div @click="() => addToCart(item)">BUY</div>
-			</div>
-			<div class="sku">{{ item.sku }}</div>
+		<div class="category-info">
+			<span>{{ items.length }} results</span>
+		</div>
+		<div class="category-items">
+			<Item
+					v-for="(item, index) in items"
+					:key="`${index}-${item.sku}`"
+					:item="item"
+			/>
 		</div>
 	</div>
 </template>
 
 <script>
+	import Item from './Item';
+
 	export default {
 		name: "Category",
 
-		methods: {
-			addToCart(item) {
-				this.$store.commit('addToCart', {item});
+		data() {
+			return {
+				clicked: false
 			}
+		},
+
+		methods: {
+
 		},
 
 		props: {
@@ -39,42 +40,31 @@
 				}]
 			}
 		},
+
+		components: {Item}
 	}
 </script>
 
 <style scoped lang="scss">
 	.category {
 		display: flex;
-		padding-top: 45px;
-		flex-wrap: wrap;
-		justify-content: center;
-	}
+		flex-direction: column;
 
-	.item {
-		width: 200px;
-		padding: 20px;
-		background-color: azure;
-		box-shadow: 3px 2px 9px -2px rgba(0, 0, 0, 0.2);
-		margin-right: 20px;
-		margin-bottom: 20px;
+		.category-info {
+			display: flex;
+			justify-content: flex-start;
 
-		.item-info {
-			& > * {
-				text-align: left;
+			span {
+				margin-left: 5px;
+				color: #949494;
+				font-size: 15px;
 			}
 		}
 
-		.add-to-cart {
-			background-color: #42b983;
-			width: 80px;
-			padding: 7px;
-			color: white;
-			margin: 20px auto;
-			cursor: pointer;
-			user-select: none;
-		}
-
-		.sku {
+		.category-items {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 12px;
 		}
 	}
 </style>
