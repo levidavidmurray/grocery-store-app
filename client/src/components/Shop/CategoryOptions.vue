@@ -43,7 +43,7 @@
 		border-bottom: $border-primary;
 		position: relative;
 		z-index: 10;
-		margin: 0 auto 20px;
+		margin: 0 auto 24px;
 
 		.option {
 			font-size: 25px;
