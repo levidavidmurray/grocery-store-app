@@ -1,4 +1,4 @@
-require('dotenv').config({path: './db.env'});
+require('dotenv').config({path: './db.env.local'});
 const Sequelize = require("sequelize");
 
 const database = process.env.DB_NAME;
