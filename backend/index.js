@@ -17,10 +17,30 @@ const categoryPathMap = {
 
 Object.entries(categoryPathMap).forEach(categoryPath => {
 	app.get(`/${categoryPath[0]}`, (req, res) => {
-		GroceryItems(categoryPath[1]).findAll({limit: 20}).then(items => {
-			res.send(items);
+		const groceryItems = [];
+
+		GroceryItems(categoryPath[1]).findAll({limit: 100}).then(items => {
+			for (let i = 0; i < items.length; i++) {
+				// I don't want to deal with non single item prices right now e.g "$4.99 for 3"
+				const price = items[i].dataValues.currentPrice;
+				const priceNum = parseFloat(price.substring(1, price.length));
+
+				if (!isNaN(priceNum)) {
+					groceryItems.push(items[i]);
+				}
+
+				if (groceryItems.length >= 20) break;
+			}
+
+			res.send(groceryItems);
 		});
 	});
+
+	app.get(`/${categoryPath[0]}/count`, (req, res) => {
+		GroceryItems(categoryPath[1]).count().then(count => {
+			res.send({ count, category: categoryPath[1] });
+		})
+	})
 });
 
 app.listen(4070, () => {

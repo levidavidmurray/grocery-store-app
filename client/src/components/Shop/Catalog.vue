@@ -8,7 +8,7 @@
 		<div class="catalog-display">
 			<ResultsFilter/>
 			<div class="category-display">
-				<Category :class="{loading: loading}" :items="items"/>
+				<Category :class="{loading: loading}" :items="items" :count="categoryCount"/>
 				<div class="loader" v-if="loading">
 					<vue-loaders name="pacman" scale="1" color="#42b983"/>
 				</div>
@@ -30,6 +30,7 @@
 		data() {
 			return {
 				options: ['bakery', 'dairy', 'deli', 'meat', 'pasta', 'produce'],
+				categoryCount: 0,
 				activeCategory: undefined,
 				items: [],
 				loading: false
@@ -41,6 +42,8 @@
 				this.activeCategory = category;
 				this.loading = true;
 
+				this.getCategoryCount(category);
+
 				axios.get(`http://localhost:4070/${category}`).then(response => {
 					this.items = [...response.data.filter(item => {
 						let price = item.currentPrice.substring(1, item.currentPrice.length);
@@ -48,6 +51,14 @@
 					})];
 					this.loading = false;
 				});
+			},
+
+			getCategoryCount(category) {
+				axios.get(`http://localhost:4070/${category}/count`).then(response => {
+					if (response.status === 200 && !isNaN(response.data.count)) {
+						this.categoryCount = response.data.count;
+					}
+				})
 			}
 		},
 

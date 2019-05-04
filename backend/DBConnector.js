@@ -1,13 +1,8 @@
-require('dotenv').config({path: './db.env.local'});
-const Sequelize = require("sequelize");
+import DBEnv from './db.env';
+import Sequelize from 'sequelize';
 
-const database = process.env.DB_NAME;
-const username = process.env.DB_USER;
-const password = process.env.DB_PASS;
-
-const connector = {host: process.env.DB_HOST, dialect: "mariadb"};
-
-const sequelize = new Sequelize(database, username, password, connector);
+const connector = {host: DBEnv.DB_HOST, dialect: "mariadb"};
+const sequelize = new Sequelize(DBEnv.DB_NAME, DBEnv.DB_USER, DBEnv.DB_PASS, connector);
 
 sequelize
 	.authenticate()

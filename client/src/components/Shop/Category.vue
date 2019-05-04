@@ -1,7 +1,7 @@
 <template>
 	<div class="category">
 		<div class="category-info">
-			<span>{{ items.length }} results</span>
+			<span>Showing {{ items.length }} of {{ count }} results</span>
 		</div>
 		<div class="category-items">
 			<Item
@@ -10,6 +10,7 @@
 					:item="item"
 			/>
 		</div>
+
 	</div>
 </template>
 
@@ -19,6 +20,11 @@
 	export default {
 		name: "Category",
 
+		props: {
+			items: Array,
+			count: Number
+		},
+
 		data() {
 			return {
 				clicked: false
@@ -27,18 +33,6 @@
 
 		methods: {
 
-		},
-
-		props: {
-			items: Array,
-			default: () => {
-				return [{
-					name: 'grocery-item',
-					brand: 'grocery-brand',
-					currentPrice: '$4.99',
-					sku: '1294801948'
-				}]
-			}
 		},
 
 		components: {Item}
@@ -65,6 +59,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			margin-top: 16px;
+			padding-bottom: 150px;
 		}
 	}
 </style>
