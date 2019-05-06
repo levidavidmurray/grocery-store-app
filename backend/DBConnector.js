@@ -4,6 +4,8 @@ import Sequelize from 'sequelize';
 const connector = {host: DBEnv.DB_HOST, dialect: "mariadb"};
 const sequelize = new Sequelize(DBEnv.DB_NAME, DBEnv.DB_USER, DBEnv.DB_PASS, connector);
 
+// TODO: Probably going to migrate python data scraper to Node.js and store data
+// 			 in MongoDB database instead of MySQL
 sequelize
 	.authenticate()
 	.then(() => {
