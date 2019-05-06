@@ -59,7 +59,7 @@
 			display: flex;
 			flex-wrap: wrap;
 			margin-top: 16px;
-			padding-bottom: 150px;
+			padding-bottom: 20px;
 		}
 	}
 </style>

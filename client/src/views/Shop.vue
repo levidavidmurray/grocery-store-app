@@ -1,6 +1,6 @@
 <template>
 	<div class="shop">
-		<Catalog />
+		<Catalog :pageNumber="pageNumber" />
 	</div>
 </template>
 
@@ -11,13 +11,17 @@
 	export default {
 		name: "shop",
 
+		props: {
+			pageNumber: null
+		},
+
 		data() {
 			return {
 			}
 		},
 
 		mounted() {
-
+			console.log(this.pageNumber);
 		},
 
 		computed: {

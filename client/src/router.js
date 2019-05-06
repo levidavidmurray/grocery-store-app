@@ -19,6 +19,12 @@ export default new Router({
       component: () => import("./views/Shop.vue")
     },
     {
+      path: "/shop/page/:pageNumber",
+      name: "shop_page",
+      component: () => import("./views/Shop.vue"),
+      props: true
+    },
+    {
       path: '/deliveries',
       name: 'deliveries',
       component: () => import('./views/Deliveries.vue')

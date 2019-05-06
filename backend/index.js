@@ -16,10 +16,16 @@ const categoryPathMap = {
 };
 
 Object.entries(categoryPathMap).forEach(categoryPath => {
+	/**
+	 * URL Params
+	 * e.g `/bakery?offset=0&limit=20`
+	 */
 	app.get(`/${categoryPath[0]}`, (req, res) => {
 		const groceryItems = [];
+		let offset = parseInt(req.query.offset) || 0;
+		let limit = parseInt(req.query.limit) || 20;
 
-		GroceryItems(categoryPath[1]).findAll({limit: 100}).then(items => {
+		GroceryItems(categoryPath[1]).findAll({offset: offset}).then(items => {
 			for (let i = 0; i < items.length; i++) {
 				// I don't want to deal with non single item prices right now e.g "$4.99 for 3"
 				const price = items[i].dataValues.currentPrice;
@@ -29,7 +35,7 @@ Object.entries(categoryPathMap).forEach(categoryPath => {
 					groceryItems.push(items[i]);
 				}
 
-				if (groceryItems.length >= 20) break;
+				if (groceryItems.length >= limit) break;
 			}
 
 			res.send(groceryItems);

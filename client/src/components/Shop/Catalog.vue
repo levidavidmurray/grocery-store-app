@@ -12,6 +12,7 @@
 				<div class="loader" v-if="loading">
 					<vue-loaders name="pacman" scale="1" color="#42b983"/>
 				</div>
+				<Paginator :total="categoryCount" :limit="pageLimit" :pageNumber="pageNumber"/>
 			</div>
 		</div>
 	</div>
@@ -23,14 +24,20 @@
 	import CategoryOptions from './CategoryOptions';
 	import Category from './Category';
 	import ResultsFilter from './ResultsFilter';
+	import Paginator from './Paginator';
 
 	export default {
 		name: "Catalog",
+
+		props: {
+			pageNumber: null,
+		},
 
 		data() {
 			return {
 				options: ['bakery', 'dairy', 'deli', 'meat', 'pasta', 'produce'],
 				categoryCount: 0,
+				pageLimit: 20,
 				activeCategory: undefined,
 				items: [],
 				loading: false
@@ -44,13 +51,12 @@
 
 				this.getCategoryCount(category);
 
-				axios.get(`http://localhost:4070/${category}`).then(response => {
-					this.items = [...response.data.filter(item => {
-						let price = item.currentPrice.substring(1, item.currentPrice.length);
-						return !isNaN(parseFloat(price));
-					})];
+				axios.get(`http://localhost:4070/${category}?offset=${this.pageOffset}`).then(response => {
+					this.items = [...response.data];
 					this.loading = false;
 				});
+
+				window.scrollTo(0, 0);
 			},
 
 			getCategoryCount(category) {
@@ -62,11 +68,24 @@
 			}
 		},
 
-		mounted() {
+		created() {
 			this.changeCategory(this.options[0]);
 		},
 
-		components: {CategoryOptions, Category, ResultsFilter}
+		watch: {
+			pageNumber()
+			{
+				this.changeCategory(this.activeCategory);
+			}
+		},
+
+		computed: {
+			pageOffset() {
+				return (parseInt(this.pageNumber) - 1) * this.pageLimit;
+			}
+		},
+
+		components: {CategoryOptions, Category, ResultsFilter, Paginator}
 	}
 </script>
 
@@ -74,6 +93,7 @@
 	.catalog {
 		width: 100%;
 		font-family: 'Poppins', sans-serif;
+		padding-bottom: 100px;
 
 		.catalog-display {
 			display: flex;
